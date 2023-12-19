@@ -26,7 +26,7 @@
             color: #fff;
             font-size: 18px;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000; /* Ensure the button stays on top */
         }
@@ -40,7 +40,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             transition: height 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
             z-index: 999;
         }
@@ -81,6 +81,12 @@
     </div>
 
     <script>
+        // Initial setup when the page is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            var chatButton = document.getElementById("chatButton");
+            chatButton.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+        });
+
         function toggleChat() {
             var chatWindow = document.getElementById("chatWindow");
             var chatButton = document.getElementById("chatButton");

@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed Chatbot Window</title>
+    <title>Chatbot Window</title>
     <style>
         body {
             margin: 0;
             padding: 0;
         }
 
-        .floating-window {
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007BFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-window {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -20,55 +38,41 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transition: height 0.3s ease; /* Add transition effect for height changes */
+            display: none;
+            z-index: 999;
+            transition: height 0.3s ease;
         }
 
-        .floating-window iframe {
+        .chat-window iframe {
             width: 100%;
-            height: calc(100% - 30px); /* Adjusted height to leave space for the button */
+            height: calc(100% - 30px);
             border: none;
-        }
-
-        .handle-bar {
-            height: 20px;
-            background-color: #007BFF;
-        }
-
-        .toggle-button {
-            width: 100%;
-            text-align: center;
-            background-color: #007BFF;
-            color: #fff;
-            cursor: pointer;
-            padding: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="floating-window" id="floatingWindow">
-        <div class="handle-bar"></div>
+    <div class="chat-icon" id="chatIcon" onclick="toggleChat()">
+        <span>&#128172;</span> <!-- Unicode character for a speech bubble, you can replace it with your own icon -->
+    </div>
+
+    <div class="chat-window" id="chatWindow">
         <iframe
             src="https://yrobel-lima-chatgpt-test-demo.hf.space"
             frameborder="0"
             width="100%"
             height="100%"
         ></iframe>
-        <div class="toggle-button" onclick="toggleChat()">Toggle Chat</div>
     </div>
 
     <script>
         function toggleChat() {
-            var chatWindow = document.getElementById("floatingWindow");
-            var button = chatWindow.querySelector(".toggle-button");
+            var chatWindow = document.getElementById("chatWindow");
 
             if (chatWindow.style.height === "20px" || !chatWindow.style.height) {
                 chatWindow.style.height = "400px";
-                button.innerText = "Toggle Chat";
             } else {
                 chatWindow.style.height = "20px";
-                button.innerText = "Open Chat";
             }
         }
     </script>

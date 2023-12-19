@@ -61,7 +61,7 @@
 <body>
 
     <div class="chat-button-container">
-        <div class="chat-button" id="chatButton" onclick="toggleChat()">
+        <div class="chat-button" id="chatButton">
             &#128172;
         </div>
 
@@ -76,7 +76,12 @@
     </div>
 
     <script>
+        var chatButton = document.getElementById("chatButton");
         var chatWindow = document.getElementById("chatWindow");
+
+        chatButton.addEventListener("click", function() {
+            toggleChat();
+        });
 
         function toggleChat() {
             if (chatWindow.style.height === "400px" || chatWindow.style.height === "") {

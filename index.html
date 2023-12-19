@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Embedded Chatbot</title>
+    <title>Embedded Chatbot</title>
     <style>
         body {
             margin: 0;
@@ -41,28 +41,12 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             display: none;
             z-index: 999;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            transform-origin: bottom right;
         }
 
         .chat-window iframe {
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        .chat-button:hover {
-            background-color: #0056b3;
-        }
-
-        .chat-window.maximized {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .chat-window.minimized {
-            transform: scale(0);
-            opacity: 0;
         }
     </style>
 </head>
@@ -84,8 +68,7 @@
     <script>
         function toggleChat() {
             var chatWindow = document.getElementById("chatWindow");
-            chatWindow.classList.toggle("maximized");
-            chatWindow.classList.toggle("minimized");
+            chatWindow.style.display = (chatWindow.style.display === "none" || chatWindow.style.display === "") ? "block" : "none";
         }
     </script>
 

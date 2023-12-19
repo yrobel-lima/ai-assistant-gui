@@ -3,13 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
-</head>
-<iframe
-	src="https://yrobel-lima-chatgpt-test-demo.hf.space"
-	frameborder="0"
-	width="650"
-	height="450"
-></iframe>
+    <title>Floating Chatbot Window</title>
+    <style>
+        /* Styles for the floating window */
+        .floating-window {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
 
+        /* Styles for the iframe */
+        .floating-window iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating window container -->
+    <div class="floating-window">
+        <!-- Embed your Hugging Face Spaces chatbot here -->
+        <iframe
+            src="https://yrobel-lima-chatgpt-test-demo.hf.space"
+            frameborder="0"
+            width="100%"
+            height="100%"
+        ></iframe>
+    </div>
+
+</body>
 </html>

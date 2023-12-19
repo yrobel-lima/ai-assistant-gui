@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Chatbot</title>
+    <title>Enhanced Embedded Chatbot</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
         }
 
         .chat-button {
@@ -26,6 +27,7 @@
             font-size: 18px;
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
         }
 
         .chat-window {
@@ -40,13 +42,23 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             display: none;
             z-index: 999;
-            transition: height 0.3s ease;
+            transition: height 0.5s ease, opacity 0.5s ease;
         }
 
         .chat-window iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .chat-greeting {
+            font-size: 16px;
+            text-align: center;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            margin: 0;
+            border-bottom: 1px solid #ccc;
         }
     </style>
 </head>
@@ -57,18 +69,22 @@
     </div>
 
     <div class="chat-window" id="chatWindow">
+        <div class="chat-greeting">
+            Welcome! How can I assist you today?
+        </div>
         <iframe
             src="https://yrobel-lima-chatgpt-test-demo.hf.space"
             frameborder="0"
             width="100%"
-            height="100%"
+            height="85%"
         ></iframe>
     </div>
 
     <script>
         function toggleChat() {
             var chatWindow = document.getElementById("chatWindow");
-            chatWindow.style.display = (chatWindow.style.display === "none" || chatWindow.style.display === "") ? "block" : "none";
+            chatWindow.style.height = (chatWindow.style.height === "0px" || chatWindow.style.height === "") ? "400px" : "0px";
+            chatWindow.style.opacity = (chatWindow.style.opacity === "0" || chatWindow.style.opacity === "") ? "1" : "0";
         }
     </script>
 

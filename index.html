@@ -28,6 +28,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
+        .chat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 999;
+        }
+
         .chat-window {
             position: fixed;
             bottom: 20px;
@@ -38,23 +49,21 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            display: none;
-            z-index: 999;
+            z-index: 1000;
             transition: height 0.3s ease;
         }
 
         .chat-window iframe {
             width: 100%;
-            height: calc(100% - 30px);
+            height: 100%;
             border: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="chat-icon" id="chatIcon" onclick="toggleChat()">
-        <span>&#128172;</span> <!-- Unicode character for a speech bubble, you can replace it with your own icon -->
-    </div>
+    <div class="chat-icon" id="chatIcon">&#128172;</div>
+    <div class="chat-overlay" id="chatOverlay" onclick="toggleChat()"></div>
 
     <div class="chat-window" id="chatWindow">
         <iframe
@@ -66,13 +75,21 @@
     </div>
 
     <script>
-        function toggleChat() {
-            var chatWindow = document.getElementById("chatWindow");
+        var chatWindow = document.getElementById("chatWindow");
+        var chatIcon = document.getElementById("chatIcon");
+        var chatOverlay = document.getElementById("chatOverlay");
 
+        chatIcon.addEventListener("click", function() {
+            toggleChat();
+        });
+
+        function toggleChat() {
             if (chatWindow.style.height === "20px" || !chatWindow.style.height) {
                 chatWindow.style.height = "400px";
+                chatOverlay.style.display = "block";
             } else {
                 chatWindow.style.height = "20px";
+                chatOverlay.style.display = "none";
             }
         }
     </script>

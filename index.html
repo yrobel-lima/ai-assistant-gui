@@ -26,7 +26,7 @@
             color: #fff;
             font-size: 18px;
             cursor: pointer;
-            box-shadow: none;
+            box-shadow: 0 0 0 transparent; /* Set transparent shadow initially */
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000; /* Ensure the button stays on top */
         }
@@ -84,7 +84,7 @@
         // Initial setup when the page is loaded
         document.addEventListener("DOMContentLoaded", function () {
             var chatButton = document.getElementById("chatButton");
-            chatButton.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+            chatButton.style.boxShadow = "0 0 0 transparent";
         });
 
         function toggleChat() {
@@ -92,7 +92,7 @@
             var chatButton = document.getElementById("chatButton");
             chatWindow.style.height = (chatWindow.style.height === "0px" || chatWindow.style.height === "") ? "400px" : "0px";
             chatWindow.style.opacity = (chatWindow.style.opacity === "0" || chatWindow.style.opacity === "") ? "1" : "0";
-            chatButton.style.boxShadow = (chatWindow.style.height === "0px") ? "0 0 10px rgba(0, 0, 0, 0.3)" : "none";
+            chatButton.style.boxShadow = (chatWindow.style.height === "0px") ? "0 0 10px rgba(0, 0, 0, 0.3)" : "0 0 0 transparent";
         }
     </script>
 

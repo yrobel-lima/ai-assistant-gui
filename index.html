@@ -79,7 +79,7 @@
         var chatWindow = document.getElementById("chatWindow");
 
         function toggleChat() {
-            if (chatWindow.style.height === "400px") {
+            if (chatWindow.style.height === "400px" || chatWindow.style.height === "") {
                 chatWindow.style.height = "0";
             } else {
                 chatWindow.style.height = "400px";

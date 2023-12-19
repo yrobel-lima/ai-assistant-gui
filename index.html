@@ -79,9 +79,9 @@
         var chatButton = document.getElementById("chatButton");
         var chatWindow = document.getElementById("chatWindow");
 
-        chatButton.addEventListener("click", function() {
+        chatButton.onclick = function() {
             toggleChat();
-        });
+        };
 
         function toggleChat() {
             if (chatWindow.style.height === "400px" || chatWindow.style.height === "") {

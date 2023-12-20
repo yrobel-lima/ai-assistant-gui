@@ -60,6 +60,15 @@
             margin: 0;
             border-bottom: 1px solid #ccc;
         }
+
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -69,6 +78,7 @@
     </div>
 
     <div class="chat-window" id="chatWindow">
+        <div class="close-button" onclick="toggleChat()">X</div>
         <div class="chat-greeting">
             Welcome! How can I assist you today?
         </div>

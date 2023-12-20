@@ -18,7 +18,7 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background-color: #007BFF;
+            background-color: rgba(76, 175, 80, 0.8); /* Green color with transparency */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -26,9 +26,9 @@
             color: #fff;
             font-size: 18px;
             cursor: pointer;
-            box-shadow: 0 0 0 transparent; /* Set transparent shadow initially */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000; /* Ensure the button stays on top */
+            z-index: 1000;
         }
 
         .chat-window {
@@ -37,11 +37,11 @@
             right: 20px;
             width: 300px;
             height: 0;
-            border: 1px solid transparent; /* Set transparent border initially */
+            border: 1px solid transparent;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 0 transparent; /* Set transparent shadow initially */
-            transition: height 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Added border transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease, opacity 0.3s ease;
             z-index: 999;
         }
 
@@ -54,8 +54,8 @@
         .chat-greeting {
             font-size: 16px;
             text-align: center;
-            padding: 10px;
-            background-color: #007BFF;
+            padding: 15px; /* Increased padding for better aesthetics */
+            background-color: rgba(76, 175, 80, 0.8); /* Green color with transparency */
             color: #fff;
             margin: 0;
             border-bottom: 1px solid #ccc;
@@ -63,8 +63,8 @@
 
         .close-button {
             position: absolute;
-            top: 5px;
-            right: 10px;
+            top: 10px;
+            right: 15px;
             font-size: 20px;
             color: #fff;
             cursor: pointer;
@@ -95,7 +95,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             var chatButton = document.getElementById("chatButton");
             var chatWindow = document.getElementById("chatWindow");
-            chatButton.style.boxShadow = "0 0 0 transparent";
+            chatButton.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
             chatWindow.style.border = "1px solid transparent";
         });
 

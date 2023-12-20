@@ -26,7 +26,7 @@
             color: #fff;
             font-size: 18px;
             cursor: pointer;
-            box-shadow: none; /* Set transparent shadow initially */
+            box-shadow: 1px transparent; /* Set transparent shadow initially */
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000; /* Ensure the button stays on top */
         }
@@ -37,10 +37,10 @@
             right: 20px;
             width: 300px;
             height: 0;
-            border: none; /* Set transparent border initially */
+            border: transparent; /* Set transparent border initially */
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: none;
+            box-shadow: 1px transparent;
             transition: height 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, border 0.5s ease; /* Added border transition */
             z-index: 999;
         }
@@ -85,8 +85,8 @@
         document.addEventListener("DOMContentLoaded", function () {
             var chatButton = document.getElementById("chatButton");
             var chatWindow = document.getElementById("chatWindow");
-            chatButton.style.boxShadow = "none";
-            chatWindow.style.border = "none";
+            chatButton.style.boxShadow = "1px transparent";
+            chatWindow.style.border = "1px transparent";
         });
 
         function toggleChat() {
@@ -94,7 +94,7 @@
             var chatButton = document.getElementById("chatButton");
             chatWindow.style.height = (chatWindow.style.height === "0px" || chatWindow.style.height === "") ? "400px" : "0px";
             chatWindow.style.opacity = (chatWindow.style.opacity === "0" || chatWindow.style.opacity === "") ? "1" : "0";
-            chatButton.style.boxShadow = (chatWindow.style.height === "0px") ? "0 0 10px rgba(0, 0, 0, 0.3)" : "0 0 0 transparent";
+            chatButton.style.boxShadow = (chatWindow.style.height === "0px") ? "0 0 0 transparent" : "0 0 0 transparent";
             chatWindow.style.border = (chatWindow.style.height === "0px") ? "1px solid #ccc" : "1px solid transparent";
         }
     </script>

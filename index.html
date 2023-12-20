@@ -25,11 +25,25 @@
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 18px;
+            font-size: 25px;
             cursor: pointer;
-            box-shadow: 0 0 0 transparent; /* Set transparent shadow initially */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000; /* Ensure the button stays on top */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, bottom 0.3s ease, box-shadow 0.3s ease;
+            /* Ensure shadow transitions smoothly */
+            z-index: 1000;
+        }
+
+        .chat-button:hover {
+            /* Slightly more pronounced shadow on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-button.hidden {
+            transform: scale(0);
+            /* Move it down a bit to give the impression it's hiding */
+            bottom: 10px;
+            /* Remove the shadow when hidden */
+            box-shadow: none;
         }
 
         .chat-window {
@@ -38,12 +52,18 @@
             right: 20px;
             width: 300px;
             height: 0;
-            border: 1px solid transparent; /* Set transparent border initially */
-            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 0 transparent; /* Set transparent shadow initially */
-            transition: height 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Added border transition */
+            border-radius: 10px;
+            transition: height 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
             z-index: 999;
+            border: 1px solid transparent;
+            /* Set border to transparent */
+        }
+
+        .chat-window.open {
+            height: 400px;
+            border: 1px solid #ccc;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
         }
 
         .chat-window iframe {
@@ -60,51 +80,53 @@
             color: #fff;
             margin: 0;
             border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .close-button {
             position: absolute;
-            top: 5px;
+            top: 8px;
             right: 10px;
             font-size: 20px;
             color: #fff;
             cursor: pointer;
+            background: none;
+            border: none;
         }
     </style>
 </head>
 
 <body>
-
     <div class="chat-button" id="chatButton" onclick="toggleChat()">
-        &#128172;
+        💬
     </div>
 
-    <div class="chat-window" id="chatWindow">
-        <div class="close-button" onclick="toggleChat()">x</div>
+    <div class="chat-window closed" id="chatWindow">
+        <button class="close-button" onclick="toggleChat()">x</button>
         <div class="chat-greeting">
             How can I assist you today?
         </div>
-        <iframe src="https://yrobel-lima-chatgpt-test-demo.hf.space" frameborder="0" width="100%"
-            height="100%"></iframe>
+        <iframe src="https://yrobel-lima-chatgpt-test-demo.hf.space" frameborder="0"></iframe>
     </div>
 
     <script>
-        // Initial setup when the page is loaded
-        document.addEventListener("DOMContentLoaded", function () {
-            var chatButton = document.getElementById("chatButton");
-            var chatWindow = document.getElementById("chatWindow");
-            chatButton.style.boxShadow = "0 0 0 transparent";
-            chatWindow.style.border = "1px solid transparent";
-        });
-
         function toggleChat() {
-            var chatWindow = document.getElementById("chatWindow");
-            chatWindow.style.height = (chatWindow.style.height === "0px" || chatWindow.style.height === "") ? "400px" : "0px";
-            chatWindow.style.opacity = (chatWindow.style.opacity === "0" || chatWindow.style.opacity === "") ? "1" : "0";
-            chatWindow.style.border = (chatWindow.style.height === "0px") ? "1px solid #ccc" : "1px solid transparent";
+            var chatButton = document.getElementById('chatButton');
+            var chatWindow = document.getElementById('chatWindow');
+
+            if (chatWindow.classList.contains('closed')) {
+                chatWindow.classList.remove('closed');
+                chatWindow.classList.add('open');
+                chatButton.classList.add('hidden');
+            } else {
+                chatWindow.classList.remove('open');
+                chatWindow.classList.add('closed');
+                chatButton.classList.remove('hidden');
+            }
         }
     </script>
-
 </body>
 
 </html>

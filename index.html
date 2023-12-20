@@ -37,7 +37,7 @@
             right: 20px;
             width: 300px;
             height: 0;
-            border: 1px solid transparent; /* Set transparent border initially */
+            border: none; /* Set transparent border initially */
             border-radius: 10px;
             overflow: hidden;
             box-shadow: none;
@@ -85,8 +85,8 @@
         document.addEventListener("DOMContentLoaded", function () {
             var chatButton = document.getElementById("chatButton");
             var chatWindow = document.getElementById("chatWindow");
-            chatButton.style.boxShadow = "0 0 0 transparent";
-            chatWindow.style.border = "1px solid rgba(0, 0, 0, 0.2)";
+            chatButton.style.boxShadow = "none";
+            chatWindow.style.border = "none";
         });
 
         function toggleChat() {

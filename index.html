@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,7 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background-color: rgba(76, 175, 80, 0.8); /* Green color with transparency */
+            background-color: #007BFF;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -26,8 +27,11 @@
             color: #fff;
             font-size: 18px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 0 0 transparent;
+            /* Set transparent shadow initially */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
+            /* Ensure the button stays on top */
         }
 
         .chat-window {
@@ -37,9 +41,13 @@
             width: 300px;
             height: 0;
             border: 1px solid transparent;
+            /* Set transparent border initially */
             border-radius: 10px;
             overflow: hidden;
-            transition: height 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 0 0 transparent;
+            /* Set transparent shadow initially */
+            transition: height 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            /* Added border transition */
             z-index: 999;
         }
 
@@ -50,25 +58,26 @@
         }
 
         .chat-greeting {
-            display: flex; /* Use flexbox for centering */
-            align-items: center; /* Center vertically */
             font-size: 16px;
             text-align: center;
-            padding: 10px; /* Increased padding for better aesthetics */
-            background-color: rgba(76, 175, 80, 0.8); /* Green color with transparency */
+            padding: 10px;
+            background-color: #007BFF;
             color: #fff;
             margin: 0;
             border-bottom: 1px solid #ccc;
         }
 
         .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
             font-size: 20px;
             color: #fff;
             cursor: pointer;
-            margin-left: auto; /* Move the close button to the right */
         }
     </style>
 </head>
+
 <body>
 
     <div class="chat-button" id="chatButton" onclick="toggleChat()">
@@ -78,14 +87,10 @@
     <div class="chat-window" id="chatWindow">
         <div class="close-button" onclick="toggleChat()">x</div>
         <div class="chat-greeting">
-            <span class="emoji">&#x1F916;</span> How can I help?
+            Hi! How can I assist you today?
         </div>
-        <iframe
-            src="https://yrobel-lima-chatgpt-test-demo.hf.space"
-            frameborder="0"
-            width="100%"
-            height="100%"
-        ></iframe>
+        <iframe src="https://yrobel-lima-chatgpt-test-demo.hf.space" frameborder="0" width="100%"
+            height="100%"></iframe>
     </div>
 
     <script>
@@ -93,7 +98,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             var chatButton = document.getElementById("chatButton");
             var chatWindow = document.getElementById("chatWindow");
-            chatButton.style.backgroundColor = "rgba(76, 175, 80, 0.8)";
+            chatButton.style.boxShadow = "0 0 0 transparent";
             chatWindow.style.border = "1px solid transparent";
         });
 
@@ -106,4 +111,5 @@
     </script>
 
 </body>
+
 </html>

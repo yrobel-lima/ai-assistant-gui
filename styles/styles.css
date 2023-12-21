@@ -91,7 +91,7 @@
         .chat-label {
             position: fixed;
             top: 10%;
-            left: 85%;
+            left: 50%;
             transform: translate(-50%, -50%);
             font-size: 24px;
             color: #007BFF;

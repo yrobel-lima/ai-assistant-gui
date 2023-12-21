@@ -11,18 +11,24 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background-color: #007BFF;
+            background-color: #90c5fd;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
             font-size: 25px;
             cursor: pointer;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
             /* Ensure shadow transitions smoothly */
             transition: transform 0.25s ease, bottom 0.25s ease, box-shadow 0.25s ease;
             z-index: 1000;
+        }
+
+        /* Image in the chat button */
+        .chat-button img {
+            width: 50px;
+            height: 50px;
+            /* filter: invert(100%);*/
         }
 
         .chat-button:hover {
@@ -68,7 +74,7 @@
             font-size: 16px;
             text-align: center;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #0052c3;
             color: #fff;
             margin: 0;
             border-bottom: 1px solid #ccc;
@@ -78,13 +84,20 @@
 
         .close-button {
             position: absolute;
-            top: 3.5px;
-            right: 10px;
-            font-size: 28px;
+            top: 10px;
+            right: 4px;
             color: #fff;
             cursor: pointer;
             background: none;
             border: none;
+
+        }
+
+        /* Image in the chat button */
+        .close-button img {
+            width: 20px;
+            height: 20px;
+            filter: invert(100%);
         }
 
         /* Add a new style for the label */
@@ -96,11 +109,4 @@
             font-size: 24px;
             color: #007BFF;
             z-index: 1000;
-        }
-
-        /* Image in the chat button */
-        .chat-button img {
-            width: 35px;
-            height: 35px;
-            filter: invert(100%);
         }

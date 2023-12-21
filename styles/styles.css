@@ -90,8 +90,8 @@
         /* Add a new style for the label */
         .chat-label {
             position: fixed;
-            top: 50%;
-            left: 50%;
+            top: 10%;
+            left: 85%;
             transform: translate(-50%, -50%);
             font-size: 24px;
             color: #007BFF;

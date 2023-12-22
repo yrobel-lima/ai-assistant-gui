@@ -10,21 +10,18 @@ assert 'OPENAI_API_KEY' in st.secrets, "OPENAI_API_KEY not found in secrets."
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
+# Initialize session state to enable the chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {"role": "assistant", "content": "👋Hi! How may I assist you today?"}]
 
+# This enables the message history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-
-# def clear_chat_history():
-#    st.session_state.messages = [
-#        {"role": "assistant", "content": "How may I assist you today?"}]
-# st.button('Clear Chat History', on_click=clear_chat_history)
-
-
-if prompt := st.chat_input("Message ChatGPT..."):
+# Chat with GPT
+if prompt := st.chat_input("Start typing your message..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)

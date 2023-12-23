@@ -82,6 +82,7 @@ body {
     padding: 8px;
     cursor: pointer;
     border-radius: 50%;
+    outline: none;
 }
 
 .close-button .material-icons {

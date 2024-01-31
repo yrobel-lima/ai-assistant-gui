@@ -19,19 +19,26 @@
         <span class="material-icons">question_answer</span>
     </div>
     <div class="chat-window">
-        <button class="close-button">
-            <span class="material-icons">minimize</span>
-        </button>
-        <div class="chat-greeting">
-            Welcome
+        <div class="chat-header">
+            <div class="chat-greeting">
+                Welcome
+            </div>
+            <button class="close-button">
+                <span class="material-icons">expand_more</span>
+            </button>
         </div>
-        <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space"></iframe>
+        <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" frameborder="0"></iframe>
     </div>
 
     <script>
         const chatWidget = document.querySelector('.chat-widget');
         const chatWindow = document.querySelector('.chat-window');
         const closeButton = document.querySelector('.close-button');
+
+        // Hide the chat window as soon as the page is loaded
+        window.addEventListener('load', () => {
+            chatWindow.classList.add('hidden');
+        });
 
         function toggleChat() {
             chatWindow.classList.toggle('open');

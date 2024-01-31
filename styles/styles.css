@@ -59,8 +59,13 @@ body {
 }
 
 @media (max-width: 600px) {
+    .chat-window {
+        width: 100vw;
+        /* Set to full width on small screens */
+    }
+
     .chat-window.open {
-        height: 80vh;
+        height: 70vh;
         /* Set to mobile height */
     }
 }

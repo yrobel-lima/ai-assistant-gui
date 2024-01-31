@@ -42,18 +42,24 @@ body {
     bottom: 3vh;
     right: 2vw;
     width: 390px;
-    height: 0;
+    height: 70vh;
     overflow: hidden;
     border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-    transition: width 0.25s ease-in-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transform: scale(0);
+    transform-origin: bottom right;
+    /* Set the origin for the transformations to the bottom right corner */
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
     z-index: 1000;
 }
 
 .chat-window.open {
-    height: 70vh;
+    transform: scale(1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     border: 1px solid #ccc;
+    opacity: 1;
 }
 
 @media screen and (max-device-width: 600px) {

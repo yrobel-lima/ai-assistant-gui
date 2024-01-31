@@ -41,6 +41,20 @@
         });
 
         function toggleChat() {
+            // Check if the chat window is open
+            if (chatWindow.classList.contains('open')) {
+                // If it's open, reset the width and height
+                chatWindow.style.width = '';
+                chatWindow.style.height = '';
+            } else {
+                // If it's not open and the window's width is less than or equal to 600px
+                if (window.innerWidth <= 600) {
+                    // Set the width and height to 90% of the window's inner width and height
+                    chatWindow.style.width = window.innerWidth * 0.9 + 'px';
+                    chatWindow.style.height = window.innerHeight * 0.9 + 'px';
+                }
+            }
+
             chatWindow.classList.toggle('open');
             chatWidget.classList.toggle('hidden');
         }

@@ -70,7 +70,7 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(1);
-        transform-origin: bottom right;
+        transform-origin: center;
         /* Shift the element back by half of its width and height */
     }
 }

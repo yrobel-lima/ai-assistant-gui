@@ -59,13 +59,13 @@ body {
 }
 
 @media (max-width: 600px) {
-    .chat-window {
+    .chat-window.open {
         width: 100vw;
         height: 100vh;
-    }
-
-    .chat-window.open {
-        height: 100vh;
+        max-height: none;
+        bottom: 0;
+        right: 0;
+        border: none;
     }
 }
 

@@ -64,16 +64,14 @@ body {
     border: none;
 }
 
-@media (max-width: 600px) {
-    .chat-window.open {
-        width: 100vw;
-        height: 100vh;
-        max-height: none;
-        bottom: 0;
-        right: 0;
-        border: none;
-        transition: all 0.3s ease-in-out;
-    }
+.chat-window.fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    bottom: 0;
+    right: 0;
+    border: none;
+    transition: all 0.25s ease-in-out;
 }
 
 .chat-header {

@@ -31,39 +31,22 @@
     </div>
 
 <script>
-    const chatWidget = document.querySelector('.chat-widget');
-    const chatWindow = document.querySelector('.chat-window');
-    const closeButton = document.querySelector('.close-button');
+        const chatWidget = document.querySelector('.chat-widget');
+        const chatWindow = document.querySelector('.chat-window');
+        const closeButton = document.querySelector('.close-button');
 
-    // Function to update the height of the chat window
-    function updateChatWindowHeight() {
-        // Check if the chat window is open and the viewport width is less than or equal to 600px
-        if (chatWindow.classList.contains('open') && window.innerWidth <= 600) {
-            // Set the height of the chat window to the inner height of the window
-            chatWindow.style.height = window.innerHeight + 'px';
-        } else {
-            // Reset the height of the chat window
-            chatWindow.style.height = '';
+        // Hide the chat window as soon as the page is loaded
+        window.addEventListener('load', () => {
+            chatWindow.classList.add('hidden');
+        });
+
+        function toggleChat() {
+            chatWindow.classList.toggle('open');
+            chatWidget.classList.toggle('hidden');
         }
-    }
 
-    // Hide the chat window as soon as the page is loaded
-    window.addEventListener('load', () => {
-        chatWindow.classList.add('hidden');
-        updateChatWindowHeight(); // Update the height of the chat window
-    });
-
-    // Update the height of the chat window when the window is resized
-    window.addEventListener('resize', updateChatWindowHeight);
-
-    function toggleChat() {
-        chatWindow.classList.toggle('open');
-        chatWidget.classList.toggle('hidden');
-        updateChatWindowHeight(); // Update the height of the chat window
-    }
-
-    chatWidget.addEventListener('click', toggleChat);
-    closeButton.addEventListener('click', toggleChat);
+        chatWidget.addEventListener('click', toggleChat);
+        closeButton.addEventListener('click', toggleChat);
 </script>
 </body>
 

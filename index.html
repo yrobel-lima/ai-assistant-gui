@@ -45,8 +45,11 @@
             chatWidget.classList.toggle('hidden');
             // If the chat window is open and the viewport width is 600px or less
             if (chatWindow.classList.contains('open') && window.innerWidth <= 600) {
-                // Set the height of the chat window to the height of the window's inner height
-                chatWindow.style.height = window.innerHeight + 'px';
+                // Add the 'fullscreen' class to the chat window
+                chatWindow.classList.add('fullscreen');
+            } else {
+                // Remove the 'fullscreen' class from the chat window
+                chatWindow.classList.remove('fullscreen');
             }
         }
 

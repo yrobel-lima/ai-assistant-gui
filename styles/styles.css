@@ -64,6 +64,18 @@ body {
     border: none;
 }
 
+@media (max-width: 600px) {
+    .chat-window.open {
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+        bottom: 0;
+        right: 0;
+        border: none;
+        transition: width 0.3s ease-in-out;
+    }
+}
+
 .chat-header {
     display: flex;
     justify-content: space-between;

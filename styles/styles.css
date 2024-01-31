@@ -57,13 +57,17 @@ body {
 }
 
 @media screen and (max-device-width: 600px) {
-
-    .chat-window,
     .chat-window.open {
         width: 90vw;
         max-width: 90vw;
         height: 90vh;
         max-height: 90vh;
+        top: 50%;
+        /* Position the top edge of the element at the middle of the container */
+        left: 50%;
+        /* Position the left edge of the element at the middle of the container */
+        transform: translate(-50%, -50%);
+        /* Shift the element back by half of its width and height */
     }
 }
 

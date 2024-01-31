@@ -58,6 +58,15 @@ body {
     border: 1px solid #ccc;
 }
 
+@media screen and (max-device-height: 600px) {
+
+    .chat-window,
+    .chat-window.open {
+        height: 90vh;
+        /* This sets a fixed height for the open chat window on mobile devices */
+    }
+}
+
 .chat-window iframe {
     width: 100%;
     height: 100%;

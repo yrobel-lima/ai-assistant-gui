@@ -66,11 +66,11 @@ body {
 
 .chat-window.fullscreen {
     width: 100vw;
-    height: 100vh;
     max-height: none;
     bottom: 0;
     right: 0;
     border: none;
+    border-radius: 0px;
     transition: all 0.25s ease-in-out;
 }
 

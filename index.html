@@ -40,29 +40,9 @@
             chatWindow.classList.add('hidden');
         });
 
-        function toggleChat(event) {
-            const isCloseButton = event.target.closest('.close-button');
-            const isOpen = chatWindow.classList.contains('open');
-
-            if (isCloseButton && isOpen) {
-                chatWindow.classList.remove('open');
-                chatWindow.classList.remove('fullscreen');
-                chatWidget.classList.remove('hidden');
-            } else {
-                chatWindow.classList.toggle('open');
-                chatWidget.classList.toggle('hidden');
-
-                // If the chat window is open and the viewport width is 600px or less
-                if (chatWindow.classList.contains('open') && window.innerWidth <= 600) {
-                    // Set the height of the chat window to the height of the window's inner height
-                    chatWindow.style.height = window.innerHeight + 'px';
-                    // Add the 'fullscreen' class to the chat window
-                    chatWindow.classList.add('fullscreen');
-                } else {
-                    // Remove the 'fullscreen' class from the chat window
-                    chatWindow.classList.remove('fullscreen');
-                }
-            }
+        function toggleChat() {
+            chatWindow.classList.toggle('open');
+            chatWidget.classList.toggle('hidden');
         }
 
         chatWidget.addEventListener('click', toggleChat);

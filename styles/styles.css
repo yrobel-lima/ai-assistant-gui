@@ -63,10 +63,8 @@ body {
 
 @media screen and (max-device-width: 600px) {
     .chat-window {
-        transform-origin: center;
-        /* Set transform-origin to center */
+        transform-origin: center; /* Set transform-origin to center */
     }
-
     .chat-window.open {
         width: 90vw;
         max-width: 90vw;

@@ -13,18 +13,18 @@
 
 <body>
     <div class="text-on-page">
-        Need help? Chat with us! 👇
+        👋 Welcome to Tall Tree Integrated Health! 🌲 <br>
     </div>
-    <div class="chat-button">
+    <div class="chat-button" role="button" tabindex="0" aria-label="Open chat">
         <span class="material-icons">question_answer</span>
     </div>
-    <div class="chat-window">
+    <div class="chat-window" role="dialog" aria-labelledby="chat-greeting">
         <div class="chat-header">
-            <div class="chat-greeting">
-                Welcome
+            <div class="chat-greeting" id="chat-greeting">
+                AI Virtual Assistant
             </div>
-            <button class="close-button">
-                <span class="material-icons">expand_more</span>
+            <button class="close-button" aria-label="Close chat">
+                <span class="material-icons">close</span>
             </button>
         </div>
         <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" frameborder="0"></iframe>

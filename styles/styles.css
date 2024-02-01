@@ -42,37 +42,37 @@ body {
     bottom: 3vh;
     right: 2vw;
     width: 390px;
-    height: 70vh;
+    height: 0;
     overflow: hidden;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    transform: scale(0);
-    transform-origin: bottom right;
     opacity: 0;
     transition: all 0.1s ease-in-out;
     z-index: 1000;
 }
 
 .chat-window.open {
-    transform: scale(1);
+    height: 70vh;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     border: 1px solid #ccc;
     opacity: 1;
 }
 
-@media screen and (max-device-width: 600px) {
+@media screen and (max-width: 600px) {
     .chat-window {
-        transform-origin: center; /* Set transform-origin to center */
+        width: 0;
+        height: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        left: 0;
+        margin: auto;
     }
+
     .chat-window.open {
         width: 90vw;
-        max-width: 90vw;
         height: 90vh;
-        max-height: 90vh;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1);
     }
 }
 

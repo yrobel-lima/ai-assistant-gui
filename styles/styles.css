@@ -41,8 +41,6 @@ body {
     position: fixed;
     bottom: 3vh;
     right: 2vw;
-    top: initial; /* Add this line */
-    left: initial; /* Add this line */
     width: 390px;
     height: 70vh;
     overflow: hidden;
@@ -65,9 +63,10 @@ body {
 
 @media screen and (max-device-width: 600px) {
     .chat-window {
-        bottom: initial; /* Add this line */
-        right: initial; /* Add this line */
+        transform-origin: center;
+        /* Set transform-origin to center */
     }
+
     .chat-window.open {
         width: 90vw;
         max-width: 90vw;
@@ -76,7 +75,6 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(1);
-        transform-origin: center;
     }
 }
 

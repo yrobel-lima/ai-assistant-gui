@@ -15,7 +15,7 @@
     <div class="text-on-page">
         Need help? Chat with us! 👇
     </div>
-    <div class="chat-widget">
+    <div class="chat-button">
         <span class="material-icons">question_answer</span>
     </div>
     <div class="chat-window">
@@ -30,8 +30,8 @@
         <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" frameborder="0"></iframe>
     </div>
 
-<script>
-        const chatWidget = document.querySelector('.chat-widget');
+    <script>
+        const chatWidget = document.querySelector('.chat-button');
         const chatWindow = document.querySelector('.chat-window');
         const closeButton = document.querySelector('.close-button');
 
@@ -61,7 +61,7 @@
 
         chatWidget.addEventListener('click', toggleChat);
         closeButton.addEventListener('click', toggleChat);
-</script>
+    </script>
 </body>
 
 </html>

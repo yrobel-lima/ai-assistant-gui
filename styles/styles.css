@@ -1,39 +1,53 @@
+:root {
+    --primary-color: #5ee7df;
+    --secondary-color: #b490ca;
+    --box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
+    --box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
+    --font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', 'Roboto', sans-serif;
+    font-family: var(--font-family);
     background-color: #f4f4f4;
 }
 
-.chat-widget {
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-button {
     position: fixed;
     bottom: 3vh;
     right: 2vw;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow-light);
     z-index: 1000;
     transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
     border: none;
 }
 
-.chat-widget span {
-    font-size: 24px;
+.chat-button span {
+    font-size: 1.5rem;
     color: white;
 }
 
-.chat-widget:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(135deg, #b490ca 0%, #5ee7df 100%);
+.chat-button:hover {
+    box-shadow: var(--box-shadow-dark);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
 }
 
-.chat-widget.hidden {
+.chat-button.hidden {
     transform: scale(0);
 }
 
@@ -54,7 +68,7 @@ body {
 
 .chat-window.open {
     height: 70vh;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow-light);
     border: 1px solid #ccc;
     opacity: 1;
 }
@@ -95,11 +109,10 @@ body {
 }
 
 .chat-greeting {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-right: 10px;
     margin-left: 10px;
 }
-
 
 .close-button {
     background: none;
@@ -115,13 +128,11 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* Add color transition */
 }
 
 .close-button:hover {
     background-color: #34495e;
     color: #ecf0f1;
-    /* Change color on hover */
 }
 
 .text-on-page {
@@ -129,19 +140,13 @@ body {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #035662;
 }
 
 .material-icons {
-    /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
     -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
     font-feature-settings: 'liga';
 }

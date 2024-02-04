@@ -5,25 +5,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat with us!</title>
-    <link rel="icon" href="images/chatbot.png">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png">
 </head>
 
 <body>
-    <div class="text-on-page">
-        👋 Welcome to Tall Tree Integrated Health! 🌲 <br>
-    </div>
-    <div class="chat-button" role="button" tabindex="0" aria-label="Open chat">
+
+    <!-- The chatbot interface code starts here... -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
+
+        :root {
+            --chatbot-primary-color: #035662;
+            --chatbot-secondary-color: #479aae;
+            --chatbot-tertiary-color: #3e8782;
+            --chatbot-background-color: #f4f4f4;
+            --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
+            --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
+            --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+        }
+
+        .chatbot-bubble {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--chatbot-primary-color) 0%, var(--chatbot-secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--chatbot-box-shadow-light);
+            z-index: 1000;
+            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+            border: none;
+        }
+
+        .chatbot-bubble span {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .chatbot-bubble:hover {
+            box-shadow: var(--chatbot-box-shadow-dark);
+            background: linear-gradient(135deg, var(--chatbot-secondary-color) 0%, var(--chatbot-primary-color) 100%);
+        }
+
+        .chatbot-bubble.hidden {
+            transform: scale(0);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 390px;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            opacity: 0;
+            transition: all 0.1s ease-in-out;
+            z-index: 1000;
+        }
+
+        .chatbot-window.open {
+            height: 70vh;
+            box-shadow: var(--chatbot-box-shadow-light);
+            border: 1px solid #ccc;
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 600px) {
+            .chatbot-window {
+                width: 0;
+                height: 0;
+                bottom: 0;
+                right: 0;
+                top: 0;
+                left: 0;
+                margin: auto;
+            }
+
+            .chatbot-window.open {
+                width: 90vw;
+                height: 90vh;
+            }
+        }
+
+        .chatbot-window iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background-color: var(--chatbot-primary-color);
+            color: #ecf0f1;
+            border-bottom: 1px solid #7f8c8d;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chatbot-header-text {
+            font-family: var(--chatbot-font-family);
+            font-size: 1.25rem;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .chatbot-window-close-button {
+            background: none;
+            border: none;
+            width: 36px;
+            height: 36px;
+            padding: 8px;
+            cursor: pointer;
+            outline: none;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .chatbot-window-close-button:hover {
+            background-color: #186864;
+        }
+
+        .chatbot-window-close-button .material-icons {
+            font-size: 1.25rem;
+        }
+
+        .material-icons {
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: 'liga';
+        }
+    </style>
+
+    <div class="chatbot-bubble" role="button" tabindex="0" aria-label="Open chat">
         <span class="material-icons">question_answer</span>
     </div>
-    <div class="chat-window" role="dialog" aria-labelledby="chat-greeting">
-        <div class="chat-header">
-            <div class="chat-greeting" id="chat-greeting">
+    <div class="chatbot-window" role="dialog" aria-labelledby="chatbot-header-text">
+        <div class="chatbot-header">
+            <div class="chatbot-header-text" id="chatbot-header-text">
                 AI Virtual Assistant
             </div>
-            <button class="close-button" aria-label="Close chat">
+            <button class="chatbot-window-close-button" aria-label="Close chat">
                 <span class="material-icons">close</span>
             </button>
         </div>
@@ -31,37 +170,40 @@
     </div>
 
     <script>
-        const chatWidget = document.querySelector('.chat-button');
-        const chatWindow = document.querySelector('.chat-window');
-        const closeButton = document.querySelector('.close-button');
+        const chatbotBubble = document.querySelector('.chatbot-bubble');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatbotCloseButton = document.querySelector('.chatbot-window-close-button');
 
         // Hide the chat window as soon as the page is loaded
         window.addEventListener('load', () => {
-            chatWindow.classList.add('hidden');
+            chatbotWindow.classList.add('hidden');
         });
 
         function toggleChat() {
             // Check if the chat window is open
-            if (chatWindow.classList.contains('open')) {
+            if (chatbotWindow.classList.contains('open')) {
                 // If it's open, reset the width and height
-                chatWindow.style.width = '';
-                chatWindow.style.height = '';
+                chatbotWindow.style.width = '';
+                chatbotWindow.style.height = '';
             } else {
                 // If it's not open and the window's width is less than or equal to 600px
                 if (window.innerWidth <= 600) {
                     // Set the width and height to 90% of the window's inner width and height
-                    chatWindow.style.width = window.innerWidth * 0.9 + 'px';
-                    chatWindow.style.height = window.innerHeight * 0.9 + 'px';
+                    chatbotWindow.style.width = window.innerWidth * 0.9 + 'px';
+                    chatbotWindow.style.height = window.innerHeight * 0.9 + 'px';
                 }
             }
 
-            chatWindow.classList.toggle('open');
-            chatWidget.classList.toggle('hidden');
+            chatbotWindow.classList.toggle('open');
+            chatbotBubble.classList.toggle('hidden');
         }
 
-        chatWidget.addEventListener('click', toggleChat);
-        closeButton.addEventListener('click', toggleChat);
+        chatbotBubble.addEventListener('click', toggleChat);
+        chatbotCloseButton.addEventListener('click', toggleChat);
     </script>
+
+    <!-- The chatbot interface code ends here -->
+
 </body>
 
 </html>

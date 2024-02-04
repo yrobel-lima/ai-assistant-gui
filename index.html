@@ -13,7 +13,7 @@
     <!-- The chatbot interface code starts here... -->
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto|Source+Sans+Pro&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
 
         :root {
@@ -23,7 +23,7 @@
             --chatbot-background-color: #f4f4f4;
             --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
             --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
-            --chatbot-font-family: 'Roboto', 'Arial', 'Source Sans Pro', sans-serif;
+            --chatbot-font-family: 'Roboto', 'Source Sans Pro', Arial, sans-serif;
         }
 
         .chatbot-bubble {
@@ -81,14 +81,19 @@
         }
 
         @media screen and (max-width: 600px) {
-            .chatbot-window.open {
-                width: 90vw;
-                height: 90vh;
+            .chatbot-window {
+                width: 0;
+                height: 0;
                 bottom: 0;
                 right: 0;
                 top: 0;
                 left: 0;
                 margin: auto;
+            }
+
+            .chatbot-window.open {
+                width: 90vw;
+                height: 90vh;
             }
         }
 
@@ -161,7 +166,7 @@
                 <span class="material-icons" aria-hidden="true">close</span>
             </button>
         </div>
-        <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" frameborder="0"></iframe>
+        <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" title="Chatbot-app" frameborder="0"></iframe>
     </div>
 
     <script>
@@ -169,11 +174,26 @@
         const chatbotWindow = document.querySelector('.chatbot-window');
         const chatbotCloseButton = document.querySelector('.chatbot-window-close-button');
 
+        // Hide the chat window as soon as the page is loaded
         window.addEventListener('load', () => {
             chatbotWindow.classList.add('hidden');
         });
 
         function toggleChat() {
+            // Check if the chat window is open
+            if (chatbotWindow.classList.contains('open')) {
+                // If it's open, reset the width and height
+                chatbotWindow.style.width = '';
+                chatbotWindow.style.height = '';
+            } else {
+                // If it's not open and the window's width is less than or equal to 600px
+                if (window.innerWidth <= 600) {
+                    // Set the width and height to 90% of the window's inner width and height
+                    chatbotWindow.style.width = window.innerWidth * 0.9 + 'px';
+                    chatbotWindow.style.height = window.innerHeight * 0.9 + 'px';
+                }
+            }
+
             chatbotWindow.classList.toggle('open');
             chatbotBubble.classList.toggle('hidden');
         }

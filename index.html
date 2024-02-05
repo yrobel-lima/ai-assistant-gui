@@ -18,12 +18,11 @@
 
         :root {
             --chatbot-primary-color: #035662;
-            --chatbot-secondary-color: #479aae;
-            --chatbot-tertiary-color: #3e8782;
+            --chatbot-secondary-color: #1e6172;
             --chatbot-background-color: #f4f4f4;
             --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
             --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
-            --chatbot-font-family: 'Roboto', 'Source Sans Pro', Arial, sans-serif;
+            --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
         }
 
         .chatbot-bubble {
@@ -40,7 +39,7 @@
             cursor: pointer;
             box-shadow: var(--chatbot-box-shadow-light);
             z-index: 1000;
-            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
             border: none;
         }
 
@@ -56,6 +55,7 @@
 
         .chatbot-bubble.hidden {
             transform: scale(0);
+            opacity: 0;
         }
 
         .chatbot-window {

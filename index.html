@@ -11,198 +11,201 @@
 <body>
 
     <!-- The chatbot interface code starts here... -->
+    <div id="chatbot-container">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
+            @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
+            :root {
+                --chatbot-primary-color: #035662;
+                --chatbot-secondary-color: #1e6172;
+                --charbot-tertiary-color: #186864;
+                --chatbot-background-color: #f4f4f4;
+                --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
+                --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
+                --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+                --chatbot-z-index: 9999;
+            }
 
-        :root {
-            --chatbot-primary-color: #035662;
-            --chatbot-secondary-color: #1e6172;
-            --chatbot-background-color: #f4f4f4;
-            --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
-            --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
-            --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
-        }
+            #chatbot-container {
+                font-family: var(--chatbot-font-family);
+                position: fixed;
+                z-index: var(--chatbot-z-index);
+                box-sizing: border-box;
+            }
 
-        .chatbot-bubble {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--chatbot-primary-color) 0%, var(--chatbot-secondary-color) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--chatbot-box-shadow-light);
-            z-index: 1000;
-            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-            border: none;
-        }
+            #chatbot-container .chatbot-bubble {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, var(--chatbot-primary-color) 0%, var(--chatbot-secondary-color) 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: var(--chatbot-box-shadow-light);
+                transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+                border: none;
+                z-index: var(--chatbot-z-index);
+            }
 
-        .chatbot-bubble span {
-            font-size: 1.5rem;
-            color: white;
-        }
+            #chatbot-container .chatbot-bubble span {
+                font-size: 1.5rem;
+                color: white;
+            }
 
-        .chatbot-bubble:hover {
-            box-shadow: var(--chatbot-box-shadow-dark);
-            background: linear-gradient(135deg, var(--chatbot-secondary-color) 0%, var(--chatbot-primary-color) 100%);
-        }
+            #chatbot-container .chatbot-bubble:hover {
+                box-shadow: var(--chatbot-box-shadow-dark);
+                background: linear-gradient(135deg, var(--chatbot-secondary-color) 0%, var(--chatbot-primary-color) 100%);
+            }
 
-        .chatbot-bubble.hidden {
-            transform: scale(0);
-            opacity: 0;
-        }
+            #chatbot-container .chatbot-bubble.hidden {
+                transform: scale(0);
+                opacity: 0;
+            }
 
-        .chatbot-window {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 390px;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.2s, transform 0.2s;
-            z-index: 1000;
-        }
-
-        .chatbot-window.open {
-            height: 70vh;
-            box-shadow: var(--chatbot-box-shadow-light);
-            border: 1px solid #ccc;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media screen and (max-width: 600px) {
-            .chatbot-window {
-                width: 0;
+            #chatbot-container .chatbot-window {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                width: 390px;
                 height: 0;
-                bottom: 0;
-                right: 0;
-                top: 0;
-                left: 0;
-                margin: auto;
+                overflow: hidden;
+                border-radius: 10px;
+                opacity: 0;
+                transform: translateY(50px);
+                transition: opacity 0.2s, transform 0.2s;
             }
 
-            .chatbot-window.open {
-                width: 90vw;
-                height: 90vh;
+            #chatbot-container .chatbot-window.open {
+                height: 70vh;
+                box-shadow: var(--chatbot-box-shadow-light);
+                border: 1px solid #ccc;
+                opacity: 1;
+                transform: translateY(0);
+                z-index: var(--chatbot-z-index);
             }
-        }
 
-        .chatbot-window iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+            @media screen and (max-width: 600px) {
+                #chatbot-container .chatbot-window {
+                    width: 0;
+                    height: 0;
+                }
 
-        .chatbot-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px;
-            background-color: var(--chatbot-primary-color);
-            color: #ecf0f1;
-            border-bottom: 1px solid #7f8c8d;
-        }
-
-        .chatbot-header-text {
-            font-family: var(--chatbot-font-family);
-            font-size: 1.25rem;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-
-        .chatbot-window-close-button {
-            background: none;
-            border: none;
-            width: 36px;
-            height: 36px;
-            padding: 8px;
-            cursor: pointer;
-            outline: none;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.25s ease, color 0.3s ease;
-        }
-
-        .chatbot-window-close-button:hover {
-            background-color: #186864;
-        }
-
-        .chatbot-window-close-button .material-icons {
-            font-size: 1.25rem;
-        }
-
-        .material-icons {
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            -moz-osx-font-smoothing: grayscale;
-            font-feature-settings: 'liga';
-        }
-    </style>
-
-    <div class="chatbot-bubble" role="button" tabindex="0" aria-label="Open chat">
-        <span class="material-icons">question_answer</span>
-    </div>
-    <div class="chatbot-window" role="dialog" aria-modal="true" aria-labelledby="chatbot-header-text">
-        <div class="chatbot-header">
-            <div class="chatbot-header-text" id="chatbot-header-text">
-                AI Virtual Assistant
-            </div>
-            <button class="chatbot-window-close-button" aria-label="Close chat">
-                <span class="material-icons" aria-hidden="true">close</span>
-            </button>
-        </div>
-        <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" title="Chatbot-app" frameborder="0"></iframe>
-    </div>
-
-    <script>
-        const chatbotBubble = document.querySelector('.chatbot-bubble');
-        const chatbotWindow = document.querySelector('.chatbot-window');
-        const chatbotCloseButton = document.querySelector('.chatbot-window-close-button');
-
-        // Hide the chat window as soon as the page is loaded
-        window.addEventListener('load', () => {
-            chatbotWindow.classList.add('hidden');
-        });
-
-        function toggleChat() {
-            // Check if the chat window is open
-            if (chatbotWindow.classList.contains('open')) {
-                // If it's open, reset the width and height
-                chatbotWindow.style.width = '';
-                chatbotWindow.style.height = '';
-            } else {
-                // If it's not open and the window's width is less than or equal to 600px
-                if (window.innerWidth <= 600) {
-                    // Set the width and height to 90% of the window's inner width and height
-                    chatbotWindow.style.width = window.innerWidth * 0.9 + 'px';
-                    chatbotWindow.style.height = window.innerHeight * 0.9 + 'px';
+                /* 90% of the window for mobile devices (in conjunction with the script) */
+                #chatbot-container .chatbot-window.open {
+                    width: 90vw;
+                    height: 90vh;
+                    bottom: 0;
+                    right: 0;
+                    top: 0;
+                    left: 0;
+                    margin: auto;
                 }
             }
 
-            chatbotWindow.classList.toggle('open');
-            chatbotBubble.classList.toggle('hidden');
-        }
+            #chatbot-container .chatbot-window iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
 
-        chatbotBubble.addEventListener('click', toggleChat);
-        chatbotCloseButton.addEventListener('click', toggleChat);
-    </script>
+            #chatbot-container .chatbot-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+                background-color: var(--chatbot-primary-color);
+                color: #ecf0f1;
+                border-bottom: 1px solid #7f8c8d;
+            }
 
-    <!-- The chatbot interface code ends here -->
+            #chatbot-container .chatbot-header-text {
+                font-size: 1.25rem;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+
+            #chatbot-container .chatbot-window-close-button {
+                background: none;
+                border: none;
+                width: 36px;
+                height: 36px;
+                padding: 8px;
+                cursor: pointer;
+                outline: none;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background-color 0.25s ease, color 0.3s ease;
+            }
+
+            #chatbot-container .chatbot-window-close-button:hover {
+                background-color: var(--charbot-tertiary-color);
+            }
+
+            #chatbot-container .chatbot-window-close-button .material-icons {
+                font-size: 1.25rem;
+            }
+
+            #chatbot-container .material-icons {
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                -moz-osx-font-smoothing: grayscale;
+                font-feature-settings: 'liga';
+            }
+        </style>
+
+        <div class="chatbot-bubble" role="button" tabindex="0" aria-label="Open chat">
+            <span class="material-icons">question_answer</span>
+        </div>
+        <div class="chatbot-window" role="dialog" aria-modal="true" aria-labelledby="chatbot-header-text">
+            <div class="chatbot-header">
+                <div class="chatbot-header-text" id="chatbot-header-text">
+                    AI Virtual Assistant
+                </div>
+                <button class="chatbot-window-close-button" aria-label="Close chat">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                </button>
+            </div>
+            <iframe src="https://yrobel-lima-llm-powered-assistant.hf.space" title="Chatbot-app"></iframe>
+        </div>
+
+        <script>
+            const chatbotContainer = document.querySelector('#chatbot-container');
+            const chatbotBubble = chatbotContainer.querySelector('.chatbot-bubble');
+            const chatbotWindow = chatbotContainer.querySelector('.chatbot-window');
+            const chatbotCloseButton = chatbotContainer.querySelector('.chatbot-window-close-button');
+
+            function toggleChat() {
+                // Check if the chat window is open
+                if (chatbotWindow.classList.contains('open')) {
+                    // If it's open, reset the width and height
+                    chatbotWindow.style.width = '';
+                    chatbotWindow.style.height = '';
+                } else {
+                    // If it's not open and the window's width is less than or equal to 600px
+                    if (window.innerWidth <= 600) {
+                        // Set the width and height to 90% of the window's inner width and height (fixes the problem with Chrome iOS)
+                        chatbotWindow.style.width = window.innerWidth * 0.9 + 'px';
+                        chatbotWindow.style.height = window.innerHeight * 0.9 + 'px';
+                    }
+                }
+
+                chatbotWindow.classList.toggle('open');
+                chatbotBubble.classList.toggle('hidden');
+            }
+
+            chatbotBubble.addEventListener('click', toggleChat);
+            chatbotCloseButton.addEventListener('click', toggleChat);
+        </script>
+
+        <!-- The chatbot interface code ends here -->
 
 </body>
 

@@ -90,10 +90,6 @@
             }
 
             @media screen and (max-width: 600px) {
-                #chatbot-container .chatbot-window {
-                    width: 0;
-                    height: 0;
-                }
 
                 /* 90% of the window for mobile devices (in conjunction with the script) */
                 #chatbot-container .chatbot-window.open {
@@ -104,6 +100,7 @@
                     top: 0;
                     left: 0;
                     margin: auto;
+                    position: fixed;
                 }
             }
 

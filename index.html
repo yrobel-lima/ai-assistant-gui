@@ -17,7 +17,7 @@
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
 
             /* Review this*/
-            :root {
+            #chatbot-container {
                 --chatbot-primary-color: #1b2e2c;
                 --chatbot-secondary-color: #035662;
                 --chatbot-tertiary-color: #13413e;
@@ -26,11 +26,12 @@
                 --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
                 --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
                 --chatbot-z-index: 999999999;
-            }
-
-            #chatbot-container {
                 font-family: var(--chatbot-font-family);
-                position: fixed;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
                 z-index: var(--chatbot-z-index);
                 box-sizing: border-box;
             }
@@ -84,13 +85,13 @@
             #chatbot-container .chatbot-window.open {
                 height: 70vh;
                 box-shadow: var(--chatbot-box-shadow-light);
-                border: 1px solid #ccc;
+                border: 1px solid var(--chatbot-primary-color);
                 opacity: 1;
                 transform: translateY(0);
                 z-index: var(--chatbot-z-index);
             }
 
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 640px) {
 
                 /* 90% of the window for mobile devices (in conjunction with the script) */
                 #chatbot-container .chatbot-window.open {
@@ -107,7 +108,7 @@
 
             #chatbot-container .chatbot-window iframe {
                 width: 100%;
-                height: 100%;
+                height: 98%;
                 border: none;
             }
 

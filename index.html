@@ -21,7 +21,7 @@
                 --chatbot-primary-color: #1b2e2c;
                 --chatbot-secondary-color: #035662;
                 --chatbot-tertiary-color: #13413e;
-                --chatbot-background-color: #f4f4f4;
+                --chatbot-bubble-color: #a4bb77;
                 --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
                 --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
                 --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
@@ -42,7 +42,7 @@
                 right: 25px;
                 width: 60px;
                 height: 60px;
-                background: linear-gradient(135deg, var(--chatbot-primary-color) 0%, var(--chatbot-secondary-color) 100%);
+                background: var(--chatbot-bubble-color);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -61,7 +61,7 @@
 
             #chatbot-container .chatbot-bubble:hover {
                 box-shadow: var(--chatbot-box-shadow-dark);
-                background: linear-gradient(135deg, var(--chatbot-secondary-color) 0%, var(--chatbot-primary-color) 100%);
+                background: var(--chatbot-bubble-color);
             }
 
             #chatbot-container .chatbot-bubble.hidden {

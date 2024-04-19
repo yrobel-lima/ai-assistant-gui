@@ -16,7 +16,6 @@
             @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round');
 
-            /* Review this*/
             #chatbot-container {
                 --chatbot-primary-color: #1b2e2c;
                 --chatbot-secondary-color: #035662;
@@ -25,15 +24,11 @@
                 --chatbot-box-shadow-light: 0 3px 6px rgba(0, 0, 0, 0.3);
                 --chatbot-box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
                 --chatbot-font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+                --chatbot-font-size: 20px;
                 --chatbot-z-index: 999999999;
                 font-family: var(--chatbot-font-family);
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
                 z-index: var(--chatbot-z-index);
-                box-sizing: border-box;
+                position: fixed;
             }
 
             #chatbot-container .chatbot-bubble {
@@ -85,7 +80,6 @@
             #chatbot-container .chatbot-window.open {
                 height: 70vh;
                 box-shadow: var(--chatbot-box-shadow-light);
-                /*border: 1px solid var(--chatbot-primary-color);*/
                 opacity: 1;
                 transform: translateY(0);
                 z-index: var(--chatbot-z-index);
@@ -120,11 +114,10 @@
                 padding: 5px;
                 background-color: var(--chatbot-primary-color);
                 color: #ecf0f1;
-                /*border-bottom: 1px solid #7f8c8d;*/
             }
 
             #chatbot-container .chatbot-header-text {
-                font-size: 20px;
+                font-size: var(--chatbot-font-size);
                 margin-right: 10px;
                 margin-left: 10px;
             }
@@ -150,7 +143,7 @@
             }
 
             #chatbot-container .chatbot-window-close-button .material-icons {
-                font-size: 20px;
+                font-size: var(--chatbot-font-size);
             }
 
             #chatbot-container .material-icons {
@@ -159,8 +152,39 @@
                 -moz-osx-font-smoothing: grayscale;
                 font-feature-settings: 'liga';
             }
+
+            #chatbot-container .chat-notice {
+                position: fixed;
+                bottom: 90px;
+                right: 25px;
+                background-color: var(--chatbot-bubble-color);
+                box-shadow: var(--chatbot-box-shadow-light);
+                padding: 8px;
+                border-radius: 300px;
+                display: flex;
+                justify-content: space-between;
+                line-height: 1.2;
+                align-items: center;
+                color: white;
+            }
+
+            #chatbot-container .chat-notice span {
+                margin-right: 10px;
+            }
+
+            #chatbot-container .chat-notice .close-notice {
+                background: none;
+                border: none;
+                font-size: var(--chatbot-font-size);
+                cursor: pointer;
+                color: white;
+            }
         </style>
 
+        <div class="chat-notice">
+            <span>👋 Need help? Ask Ella</span>
+            <button class="material-icons close-notice">close</button>
+        </div>
         <div class="chatbot-bubble" role="button" tabindex="0" aria-label="Open chat">
             <span class="material-icons">question_answer</span>
         </div>
@@ -181,6 +205,8 @@
             const chatbotBubble = chatbotContainer.querySelector('.chatbot-bubble');
             const chatbotWindow = chatbotContainer.querySelector('.chatbot-window');
             const chatbotCloseButton = chatbotContainer.querySelector('.chatbot-window-close-button');
+            const chatNotice = chatbotContainer.querySelector('.chat-notice');
+            const closeNoticeButton = chatNotice.querySelector('.close-notice');
 
             function toggleChat() {
                 // Check if the chat window is open
@@ -201,8 +227,13 @@
                 chatbotBubble.classList.toggle('hidden');
             }
 
+            function closeNotice() {
+                chatNotice.style.display = 'none';
+            }
+
             chatbotBubble.addEventListener('click', toggleChat);
             chatbotCloseButton.addEventListener('click', toggleChat);
+            closeNoticeButton.addEventListener('click', closeNotice);
         </script>
 
         <!-- The chatbot interface code ends here -->
